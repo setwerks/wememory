@@ -1,0 +1,28 @@
+{
+  "name": "@wememory/event-threads",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+  },
+  "dependencies": {
+    "@wememory/types": "workspace:*",
+    "@wememory/lib": "workspace:*",
+    "@supabase/supabase-js": "^2.22.12",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.54.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.2.2"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  }
+} 

@@ -1,0 +1,95 @@
+Cursor Prompt Workflow for Building WeMemory
+🟩 PHASE 1: Monorepo Bootstrapping
+
+Prompt 1 – Initial Setup
+
+    Help me set up a monorepo with apps/web (React + Vite), apps/mobile (Expo + React Native), and shared packages (packages/types, packages/lib, packages/ui). Use Turborepo conventions.
+
+Prompt 2 – Supabase Client
+
+    Create a shared Supabase client in packages/lib/supabase.ts that works across mobile and web, using environment variables.
+
+Prompt 3 – Shared Types
+
+    Define TypeScript types in packages/types/memory.ts for EventThread, Memory, and emotion tags. Sync them to Supabase schema.
+
+🟨 PHASE 2: Event Threads + Memory Backend
+
+Prompt 4 – Data Fetching Hook
+
+    Build a React hook called useEventThreads() in packages/event-threads that fetches public or user-owned events from Supabase.
+
+Prompt 5 – Nearby Events
+
+    Add support to useEventThreads() for filtering by location. Use geography filtering with PostGIS if available.
+
+Prompt 6 – Create Event Flow
+
+    Build a React component in apps/web/src/pages/create-event.tsx to create an event thread. Form should include title, description, tags, date range, and location.
+
+🟦 PHASE 3: Media Upload and Memory Posting
+
+Prompt 7 – Memory Uploader (Mobile)
+
+    In apps/mobile, create a screen that lets a user upload a memory tied to an event_id, compressing the video before upload using react-native-compressor.
+
+Prompt 8 – Media Upload Handler (Web)
+
+    Create a component for uploading images or short videos via drag-and-drop in apps/web, compressing video using ffmpeg.wasm before upload.
+
+Prompt 9 – Supabase Storage Uploads
+
+    Add a shared helper in packages/lib/upload.ts to upload media to Supabase Storage, and return a public URL.
+
+Prompt 10 – Thumbnail Generator
+
+    For mobile, generate and upload a thumbnail from the video using expo-video-thumbnails. Add to Memory record in Supabase.
+
+🟫 PHASE 4: Displaying Memory Threads
+
+Prompt 11 – Memory Thread Viewer (Web)
+
+    Build a timeline view for /event/[id].tsx that shows all public memories tied to an event_id, sorted by time. Include thumbnails, content, and emotion tags.
+
+Prompt 12 – Mobile Viewer
+
+    Create a mobile screen that shows the same memories as a vertical scrollable list with thumbnails and expandable full memory views.
+
+🟥 PHASE 5: Auth + Access Control
+
+Prompt 13 – Supabase Auth Integration
+
+    Add Supabase email/password auth for now, and structure auth.ts in shared package to support Phantom and WalletConnect login later.
+
+Prompt 14 – RLS Enforcement
+
+    Make sure all memory and event access checks (e.g., public vs private vs owned) are enforced in Supabase and respected in UI.
+
+🟧 PHASE 6: Future Enhancements
+
+Prompt 15 – Time Capsule Support
+
+    Add ability to schedule memories for future reveal (i.e. release_at field), and hide them from view until that date.
+
+Prompt 16 – Emotion Tag Filtering
+
+    Allow users to filter a memory thread by emotion tags like "joy", "awe", "grief".
+
+Prompt 17 – Memory Map
+
+    Build a visual map using memory location points for a shared event (e.g. all 9/11 memories around NYC).
+
+✅ Bonus Tips for Cursor Usage
+
+    When stuck:
+
+        “What’s the best way to do X in this codebase?”
+        Cursor will trace imports and help navigate better than ChatGPT here.
+
+    For edge cases:
+
+        “Add error handling and loading state to this memory uploader.”
+
+    To optimize:
+
+        “Rewrite this upload logic to support parallel media uploads and thumbnail generation.”

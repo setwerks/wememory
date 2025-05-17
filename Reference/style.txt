@@ -1,0 +1,44 @@
+Design System: WeMemory (Sunset Contrast Theme)
+
+Style Intent:
+- Warm, modern, minimal
+- Uses #FF9900 as a bold accent for key actions and highlights
+- Emphasis on contrast, whitespace, and visual clarity
+- Dark mode maintains emotional depth with soft backgrounds
+
+Typography:
+- Base font: system-ui / sans-serif
+- Heading font-weight: semibold
+- Body font-weight: normal
+- Text sizes:
+  - Headings: text-xl → text-3xl
+  - Body: text-base → text-lg
+  - Labels/metadata: text-sm
+
+Colors – Light Mode:
+- Primary: #FF9900 (orange) → buttons, tags, emphasis
+- Accent: #60A5FA (blue) → links, secondary actions
+- Background: #FFFFFF
+- Text: #1F2937
+- Border: #E5E7EB
+
+Colors – Dark Mode:
+- Primary: #FF9900
+- Accent: #60A5FA
+- Background: #0F172A
+- Surface: #1E293B
+- Text: #F3F4F6
+- Border: #374151
+
+Spacing:
+- Use multiples of 4px (Tailwind spacing scale)
+- Minimum padding: p-4 on containers
+- Gaps between elements: gap-4 or gap-6
+
+Components to match style:
+- Buttons: rounded-lg, px-4 py-2, bold text
+- Cards: rounded-2xl, shadow-sm, border, p-6
+- Inputs: rounded-md, focus:border-primary, shadow-inner
+- Tags: text-xs or text-sm, px-3 py-1, rounded-full
+
+Dark mode: Use Tailwind `dark:` variants with `class="dark"` set on `html`

@@ -1,0 +1,99 @@
+# Build1.txt - Monorepo Setup and Implementation Steps 1-4
+
+## Step 1: Monorepo Setup with Turborepo
+- Created a root package.json with Turborepo configuration:
+  - Added scripts for build, dev, lint, and clean.
+  - Set up Turborepo pipeline in turbo.json.
+- Created a pnpm-workspace.yaml file to define the monorepo structure:
+  - Included 'apps/*' and 'packages/*' as workspace packages.
+
+## Step 2: Shared Packages Setup
+- Created shared packages in the 'packages' directory:
+  - types: Contains TypeScript types for the project.
+  - lib: Contains shared utilities, including the Supabase client.
+  - ui: Contains shared UI components.
+- Each package has its own package.json with necessary metadata and scripts.
+
+## Step 3: Supabase Setup and TypeScript Types
+- Set up the Supabase project and generated TypeScript types:
+  - Installed Supabase CLI locally and logged in.
+  - Generated TypeScript types from the Supabase schema into packages/types/src/database.types.ts.
+  - Created memory.ts in packages/types/src to define EventThread, Memory, and other types.
+  - Updated tsconfig.json in packages/types to resolve imports correctly.
+  - Created tsup.config.ts for building the types package.
+
+## Step 4: React Hook for Event Threads
+- Created a new package 'event-threads' in packages/event-threads:
+  - Set up package.json with dependencies on @wememory/types, @wememory/lib, and React.
+  - Created tsup.config.ts for building the package.
+  - Implemented useEventThreads.ts, a React hook that fetches public or user-owned events from Supabase.
+  - The hook returns events, loading state, and error handling.
+  - Exported the hook via index.ts.
+
+## Step 5: Location Filtering with PostGIS
+- Updated the useEventThreads hook to support filtering by location:
+  - Added a location option to the UseEventThreadsOptions interface, including latitude, longitude, and radiusInKm.
+  - Modified the Supabase query to call a PostGIS function (events_within_radius) when a location is provided.
+- Added a PostGIS function in schema1.sql:
+  - Created a function events_within_radius that filters events within a specified radius using PostGIS's ST_DWithin function.
+- This allows users to fetch events based on their geographic location, enhancing the app's functionality.
+
+## Step 6: Create Event Form Component
+- Created a React component in apps/web/src/pages/create-event.tsx:
+  - Form includes fields for title, description, tags, date range, and location.
+  - Uses styles from Reference/style.txt with dark mode support.
+  - Submits event data to Supabase event_threads table.
+
+## Step 7: Mobile Memory Upload Screen
+- Created a React Native screen in apps/mobile/src/screens/UploadMemoryScreen.tsx:
+  - Allows users to upload memories tied to an event_id.
+  - Uses react-native-compressor for video compression.
+  - Implements dark mode and consistent styling across platforms.
+
+## Step 8: Location Filtering with PostGIS
+- Updated useEventThreads hook to support location-based filtering:
+  - Added PostGIS function for radius-based queries.
+  - Enhanced event search capabilities with geographic filtering.
+
+## Step 9: Supabase Storage Upload Helper
+- Created shared upload helper in packages/lib/src/upload.ts:
+  - Implemented uploadMedia, uploadImage, and uploadVideo functions.
+  - Handles file uploads to Supabase Storage with unique filenames.
+  - Returns public URLs for uploaded media.
+  - Includes TypeScript types and error handling.
+
+## Step 10: Video Thumbnail Generation
+- Added thumbnail generation functionality to the mobile app:
+  - Created generateAndUploadThumbnail function in packages/lib/src/upload.ts
+  - Integrated expo-video-thumbnails for generating video thumbnails
+  - Updated UploadMemoryScreen to generate and upload thumbnails
+  - Added thumbnail_url field to memory records in Supabase
+  - Implemented error handling and loading states
+  - Added video preview functionality using expo-av
+
+## Step 11: Memory Thread Viewer (Web)
+- Created a timeline view for event memories in apps/web/src/pages/event/[id].tsx:
+  - Implemented a responsive timeline layout with animations
+  - Added event header with title, description, and tags
+  - Displayed memories in chronological order with:
+    - Thumbnails for video memories
+    - Memory title and description
+    - Emotion tags
+    - Timestamps
+  - Used Framer Motion for smooth animations
+  - Implemented loading states and error handling
+  - Added empty state for events with no memories
+  - Styled using the design system with dark mode support
+
+## Additional Notes
+- Ensure all dependencies are installed using pnpm.
+- Use the generate-types script to keep TypeScript types in sync with the Supabase schema.
+- The useEventThreads hook can be imported and used in any React component within the monorepo.
+- All components and functions are styled consistently using the design system.
+- Dark mode support is implemented across all UI components.
+- TypeScript types are maintained throughout the codebase.
+- Supabase integration is handled through shared utilities.
+- Video thumbnails are automatically generated and stored in a separate bucket.
+- The timeline view is optimized for performance with React Query caching.
+
+This build1.txt file provides a detailed guide for rebuilding the project based on the changes made in steps 1-4. 
