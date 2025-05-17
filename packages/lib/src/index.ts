@@ -1,2 +1,5 @@
-export * from './supabase'
-export * from './upload' 
+export { supabase } from './supabase'
+export { uploadMedia, uploadImage, uploadVideo } from './upload'
+export { signIn, signUp, signOut } from './auth'
+export { getMemories, getEvent, canAccessMemory, canAccessEvent } from './rls'
+export { useAuth } from './hooks/useAuth' 

@@ -85,6 +85,16 @@
   - Added empty state for events with no memories
   - Styled using the design system with dark mode support
 
+## Step 13: Supabase Auth Integration
+- Added email/password authentication via Supabase.
+- Created a shared auth module (`packages/lib/src/auth.ts`) that supports email/password login and is structured to support future wallet-based auth (Phantom, WalletConnect).
+- Implemented sign-in, sign-up, sign-out, and getCurrentUser functions.
+
+## Step 14: RLS Enforcement
+- Created a shared RLS enforcement module (`packages/lib/src/rls.ts`) to enforce access control for memories and events.
+- Implemented functions to fetch public memories, fetch events, and check access permissions based on visibility and ownership.
+- Ensured that all memory and event access checks (public vs private vs owned) are enforced in Supabase and respected in the UI.
+
 ## Additional Notes
 - Ensure all dependencies are installed using pnpm.
 - Use the generate-types script to keep TypeScript types in sync with the Supabase schema.

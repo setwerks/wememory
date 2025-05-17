@@ -1,24 +1,24 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
     "jsx": "react-native",
-    "lib": ["DOM", "ESNext"],
-    "module": "ESNext",
-    "target": "ESNext",
     "allowJs": true,
     "skipLibCheck": true,
+    "strict": true,
     "noEmit": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
       "@wememory/lib": ["../../packages/lib/src"],
       "@wememory/types": ["../../packages/types/src"]
     }
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 } 

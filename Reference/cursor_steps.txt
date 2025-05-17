@@ -65,6 +65,55 @@ Prompt 14 – RLS Enforcement
 
     Make sure all memory and event access checks (e.g., public vs private vs owned) are enforced in Supabase and respected in UI.
 
+Prompt 13a – Auth UI Components (Web)
+
+    Create a login/signup screen in apps/web/src/pages/auth.tsx.
+    It should allow users to:
+
+        Sign up or log in with email + password
+
+        Show error and success messages
+
+        Store user session via Supabase client
+        Use Tailwind styling with the Sunset Contrast theme. Show a toggle between “Login” and “Sign up” modes.
+
+📱 Prompt 13b – Auth UI Components (Mobile)
+
+    Create a screen in apps/mobile/app/auth.tsx that allows users to:
+
+        Login or sign up using email and password
+
+        Show success/error feedback
+
+        Save session via Supabase client
+        Use expo-router navigation and NativeWind for styling.
+
+📦 Prompt 13c – Shared Auth Hook (Cross-platform)
+
+    In packages/lib/auth.ts, create a useAuth() hook that:
+
+        Wraps supabase.auth.getUser() and supabase.auth.onAuthStateChange
+
+        Exposes current user, loading state, and signOut()
+
+        Works in both web and mobile environments
+
+🧠 Prompt 13d – Auth-aware Routing
+
+    In both apps/web and apps/mobile, implement auth gating:
+
+        If user is not logged in, redirect to /auth
+
+        If logged in, allow access to main app
+        For web, use a layout component or useEffect in pages.
+        For mobile, use a conditional layout or navigator guard.
+
+🌘 Prompt 13e – Dark Mode + Auth Styling
+
+    Update the auth form components to support dark mode using dark: Tailwind classes.
+    Primary button should use bg-wememory.primary, text should match theme.
+
+    
 🟧 PHASE 6: Future Enhancements
 
 Prompt 15 – Time Capsule Support

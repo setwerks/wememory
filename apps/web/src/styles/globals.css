@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Sunset Contrast Theme */
+  --color-background: #1a1a1a;
+  --color-card: #2d2d2d;
+  --color-text: #ffffff;
+  --color-border: #404040;
+  --color-primary: #ff6b6b;
+  --color-primary-dark: #ff5252;
+  --color-secondary: #4ecdc4;
+  --color-accent: #ffd93d;
+  --color-error: #ff4b4b;
+  --color-success: #4caf50;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-4 py-2 rounded-lg font-semibold shadow-sm transition
+           bg-[#FF9900] text-white
+           hover:bg-[#ffae42] focus:outline-none focus:ring-2 focus:ring-[#FF9900] focus:ring-offset-2;
+  }
+  .dark .btn-primary {
+    @apply bg-[#FF9900] text-gray-900 hover:bg-[#ffae42];
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 rounded-lg font-semibold shadow-sm transition
+           bg-accent text-white
+           hover:bg-blue-400 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
+  }
+
+  .input {
+    @apply px-4 py-2 rounded-md shadow-inner border border-border focus:border-[#FF9900] focus:ring-1 focus:ring-[#FF9900];
+  }
+
+  .card {
+    @apply rounded-2xl shadow-sm border p-6;
+  }
+}
+
+/* Dark mode overrides */
+.dark {
+  --color-background: #1a1a1a;
+  --color-card: #2d2d2d;
+  --color-text: #ffffff;
+  --color-border: #404040;
+} 

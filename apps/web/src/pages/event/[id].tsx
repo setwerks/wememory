@@ -66,7 +66,8 @@ export default function EventPage() {
           {event.tags?.map((tag: string) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+              className="px-3 py-1 rounded-full text-sm"
+              style={{ background: 'rgba(255,153,0,0.1)', color: '#FF9900' }}
             >
               {tag}
             </span>
@@ -90,7 +91,7 @@ export default function EventPage() {
               className="relative mb-8"
             >
               {/* Timeline dot */}
-              <div className="absolute left-4 top-6 w-3 h-3 rounded-full bg-primary -translate-x-1/2"></div>
+              <div className="absolute left-4 top-6 w-3 h-3 rounded-full" style={{ background: '#FF9900' }}></div>
 
               {/* Memory content */}
               <div className="ml-12 bg-card rounded-lg p-4 shadow-sm">
@@ -119,7 +120,8 @@ export default function EventPage() {
                       {memory.tags?.map((tag: string) => (
                         <span
                           key={tag}
-                          className="px-2 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                          className="px-2 py-1 rounded-full text-sm"
+                          style={{ background: 'rgba(255,153,0,0.1)', color: '#FF9900' }}
                         >
                           {tag}
                         </span>
